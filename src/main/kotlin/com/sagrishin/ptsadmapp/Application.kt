@@ -34,6 +34,25 @@ fun main() {
         installCompression()
         installHeaders()
         installAuth()
+
+//        install(Locations)
+//        install(SwaggerSupport) {
+//            forwardRoot = true
+//            val information = Information(
+//                version = "v1.0-alpha"
+//            )
+//            swagger = Swagger().apply {
+//                info = information
+//                definitions["patientUuid"] = patientSchema
+//            }
+//            openApi = OpenApi().apply {
+//                info = information
+//                components.schemas["size"] = sizeSchemaMap
+//                components.schemas[petUuid] = petIdSchema
+//                components.schemas["Rectangle"] = rectangleSchemaMap("#/components/schemas")
+//            }
+//        }
+
         installRoutes()
     }.start(true)
 }

@@ -76,6 +76,8 @@ dependencies {
     compile "mysql:mysql-connector-java:5.1.13"
     compile "org.jetbrains.exposed:exposed:0.10.4"
 
+    compile "de.nielsfalk.ktor:ktor-swagger:0.5.0"
+
     testCompile "org.slf4j:slf4j-simple:1.7.25"
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
     testCompile "junit:junit:4.12"

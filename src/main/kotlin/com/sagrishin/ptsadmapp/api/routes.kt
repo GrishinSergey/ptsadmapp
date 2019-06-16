@@ -8,6 +8,9 @@ import com.sagrishin.ptsadmapp.core.crypt.JwtUtil
 import com.sagrishin.ptsadmapp.domain.models.DomainAppointment
 import com.sagrishin.ptsadmapp.domain.models.DomainPatient
 import com.sagrishin.ptsadmapp.domain.models.DomainUser
+import de.nielsfalk.ktor.swagger.get
+import de.nielsfalk.ktor.swagger.ok
+import de.nielsfalk.ktor.swagger.responds
 import io.ktor.application.Application
 import io.ktor.application.ApplicationCall
 import io.ktor.application.call
@@ -58,6 +61,17 @@ fun Application.getRoutes(): Routing {
         }
 
         authenticate("jwt") {
+
+//            routing {
+//                get<getAllByCurrentDoctor>(responds(ok<PatientsByDoctor>())) {
+//                    val doctorId = getRequestedUserId()
+//                    if (doctorId > 0) {
+//                        respond(patientsController.getAllBy(doctorId))
+//                    } else {
+//                        respondError("Can't find user with id $doctorId")
+//                    }
+//                }
+//            }
 
             route("patients") {
 
@@ -212,5 +226,5 @@ private fun PipelineContext<Unit, ApplicationCall>.getRequestedUserId(): Long {
 }
 
 private fun PipelineContext<Unit, ApplicationCall>.getPassedToken(): String {
-    return call.request.headers["Authorization"]!!.split(" ").last()
+    return (call.request.headers["Authorization"] ?: "").split(" ").last()
 }
