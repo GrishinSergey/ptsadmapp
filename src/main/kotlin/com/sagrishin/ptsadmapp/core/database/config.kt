@@ -7,14 +7,14 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class PostgreSqlConfig {
 
     companion object {
-        private const val DATABASE_NAME = "d8qnhnjrr13it7"
-        private const val DATABASE_USER = "wacxgsgswztuey"
-        private const val DATABASE_PASSWORD = "877b5636020f7e0653596d3efcca9b55914c401c1b8443022e9c296f93b654c0"
+        private const val DATABASE_NAME = "d35binra7274u6"
+        private const val DATABASE_USER = "mfucswtpxeglbm"
+        private const val DATABASE_PASSWORD = "a6973cd70bd92822c1cacd5ae529943663be23566f253f1e70638211592f8309"
 
         private const val DATABASE_DRIVER = "org.postgresql.Driver"
         private const val DATABASE_TYPE = "postgresql"
 
-        private const val DATABASE_HOST = "ec2-54-225-150-216.compute-1.amazonaws.com"
+        private const val DATABASE_HOST = "ec2-23-21-148-223.compute-1.amazonaws.com"
         private const val DATABASE_PORT = "5432"
 
         private const val CONNECTION_ENCODING = "characterEncoding=utf8"

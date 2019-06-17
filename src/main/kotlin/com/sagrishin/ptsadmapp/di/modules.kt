@@ -9,6 +9,7 @@ import com.sagrishin.ptsadmapp.controllers.impl.AppointmentsControllerImpl
 import com.sagrishin.ptsadmapp.controllers.impl.AuthorizationControllerImpl
 import com.sagrishin.ptsadmapp.controllers.impl.PatientsControllerImpl
 import com.sagrishin.ptsadmapp.core.database.MySqlConfig
+import com.sagrishin.ptsadmapp.core.database.PostgreSqlConfig
 import com.sagrishin.ptsadmapp.domain.services.AppointmentsService
 import com.sagrishin.ptsadmapp.domain.services.AuthorizationService
 import com.sagrishin.ptsadmapp.domain.services.PatientsService
@@ -16,12 +17,15 @@ import com.sagrishin.ptsadmapp.domain.services.impl.AppointmentsServiceImpl
 import com.sagrishin.ptsadmapp.domain.services.impl.AuthorizationServiceImpl
 import com.sagrishin.ptsadmapp.domain.services.impl.PatientsServiceImpl
 import org.joda.time.DateTime
+import org.koin.core.qualifier.StringQualifier
 import org.koin.dsl.module
 import org.koin.experimental.builder.singleBy
 
 val appModule = module(createdAtStart = true) {
 
-    single { MySqlConfig().getDatabaseInstance() }
+    single(StringQualifier("release")) { PostgreSqlConfig().getDatabaseInstance() }
+
+//    single(StringQualifier("debug")) { MySqlConfig().getDatabaseInstance() }
 
     single {
         GsonBuilder()
