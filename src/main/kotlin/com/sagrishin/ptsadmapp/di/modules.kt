@@ -23,9 +23,9 @@ import org.koin.experimental.builder.singleBy
 
 val appModule = module(createdAtStart = true) {
 
-    single(StringQualifier("release")) { PostgreSqlConfig().getDatabaseInstance() }
+    single { PostgreSqlConfig().getDatabaseInstance() }
 
-//    single(StringQualifier("debug")) { MySqlConfig().getDatabaseInstance() }
+//    single { MySqlConfig().getDatabaseInstance() }
 
     single {
         GsonBuilder()
