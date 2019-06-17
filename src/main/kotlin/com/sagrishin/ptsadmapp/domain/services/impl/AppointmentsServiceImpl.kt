@@ -10,8 +10,7 @@ import com.sagrishin.ptsadmapp.domain.services.AppointmentsService
 import com.sagrishin.ptsadmapp.domain.services.PatientsService
 import com.sagrishin.ptsadmapp.domain.services.toDomainModel
 import com.sagrishin.ptsadmapp.domain.services.transaction
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.*
 import org.joda.time.DateTime
 
 class AppointmentsServiceImpl(
@@ -52,7 +51,7 @@ class AppointmentsServiceImpl(
             val patients = patientsService.getPatientsBy(doctorId)
             val patientsIds = patients.map { it.id }
             val appointments = Appointment.find {
-                Appointments.dateTime.between(startDate, endDate) and (Appointments.patientId inList patientsIds)
+                Appointments.date.between(startDate, endDate) and (Appointments.patientId inList patientsIds)
             }.toList()
 
             (startDate..endDate).mapByDay { day ->
