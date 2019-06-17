@@ -8,17 +8,17 @@ import org.jetbrains.exposed.sql.castTo
 import org.joda.time.DateTime
 
 object Patients : LongIdTable() {
-    val name = varchar("name", 100).uniqueIndex("patientName")
-    val surname = varchar("surname", 100).uniqueIndex("patientSurname")
-    val phoneNumber = varchar("phoneNumber", 100).uniqueIndex()
-    val doctorId = long("doctorId").references(Users.long("id"), CASCADE, CASCADE)
+    val name = varchar("name", 100).uniqueIndex("patient_name")
+    val surname = varchar("surname", 100).uniqueIndex("patient_surname")
+    val phoneNumber = varchar("phone_number", 100).uniqueIndex()
+    val doctorId = long("doctor_id").references(Users.long("id"), CASCADE, CASCADE)
 }
 
 
 object Appointments : LongIdTable() {
-    val dateTime = datetime("dateTime")
+    val dateTime = datetime("date_time")
     val description = text("description")
-    val patientId = long("patientId").references(Patients.long("id"), CASCADE, CASCADE)
+    val patientId = long("patient_id").references(Patients.long("id"), CASCADE, CASCADE)
 
     val date: Cast<DateTime> get() = dateTime.castTo(DateColumnType(false))
 }
